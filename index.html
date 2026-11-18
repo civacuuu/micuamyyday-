@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2e7d6">
+<title>For Cuamiku ♡</title>
+<style>
+:root{--paper:#f4ead9;--paper2:#e9d9c2;--ink:#49382d;--muted:#806b58;--rose:#a66f68;--line:#cbb89d;--gold:#b28a54}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at 15% 10%,#fff9ef,transparent 38%),radial-gradient(ellipse at 85% 90%,rgba(181,145,105,.16),transparent 40%),repeating-linear-gradient(0deg,rgba(95,67,43,.025) 0,rgba(95,67,43,.025) 1px,transparent 1px,transparent 4px),var(--paper)}
+body:before{content:"";position:fixed;inset:10px;border:1px solid rgba(139,107,76,.28);pointer-events:none;z-index:10}
+button{font-family:Arial,sans-serif}
+.music{position:fixed;right:24px;top:20px;z-index:20;border:1px solid var(--line);border-radius:30px;background:#f8efdf;color:var(--ink);padding:10px 14px;font-size:11px;letter-spacing:1px;cursor:pointer}
+.page{display:none;min-height:100svh;padding:75px 22px 85px;align-items:center;justify-content:center;text-align:center;animation:appear .55s ease}
+.page.active{display:flex}
+.inner{width:min(720px,100%);margin:auto}
+.eyebrow,.kicker{font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--rose)}
+h1{font-size:clamp(49px,10vw,88px);font-weight:400;line-height:.98;letter-spacing:-3px;margin:20px 0}
+h1 em,h2 em{color:var(--rose);font-weight:400}
+h2{font-size:clamp(34px,7vw,52px);font-weight:400;margin:12px 0 20px}
+p{font-size:18px;line-height:1.85}
+.sub{color:var(--muted);font-style:italic;max-width:520px;margin:0 auto}
+.ornament{color:var(--gold);font-size:25px;letter-spacing:8px;margin:20px}
+.btn{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:14px 22px;letter-spacing:1.5px;text-transform:uppercase;font-size:10px;cursor:pointer;transition:.2s;margin:10px 5px}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--rose);border-color:var(--rose)}
+.envelope{width:min(290px,75vw);height:190px;margin:30px auto 25px;position:relative;cursor:pointer;filter:drop-shadow(0 10px 12px #7d614329)}
+.env-back{position:absolute;inset:0;background:#d8bea0;border:1px solid #b99e7f}
+.env-front{position:absolute;inset:0;background:linear-gradient(145deg,#ead9c1,#d1b596);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.env-flap{position:absolute;inset:0;background:#e8d5ba;clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top;transition:transform .7s}
+.seal{position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--rose);color:#fff5e8;display:grid;place-items:center;font-size:23px;box-shadow:0 2px 5px #60402c44}
+.envelope.open .env-flap{transform:rotateX(180deg)}
+.envelope.open .seal{opacity:0;transition:.2s}
+.card{background:rgba(255,251,242,.58);border:1px solid var(--line);padding:clamp(25px,6vw,48px);box-shadow:8px 8px 0 rgba(139,107,76,.08);text-align:left;position:relative}
+.card:before{content:"";position:absolute;inset:9px;border:1px solid rgba(203,184,157,.55);pointer-events:none}
+.card p{position:relative;margin:0 0 15px}
+.signature{color:var(--rose);font-style:italic;font-size:23px!important;margin-top:24px!important}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:620px;margin:25px auto}
+.photo{background:#fffaf0;padding:10px 10px 30px;box-shadow:0 5px 18px #4b37231f;transform:rotate(-1.5deg)}
+.photo:nth-child(2){transform:rotate(1.5deg);margin-top:18px}
+.photo:nth-child(3){transform:rotate(1deg)}
+.photo:nth-child(4){transform:rotate(-1deg);margin-top:18px}
+.photo img,.placeholder{width:100%;aspect-ratio:4/5;object-fit:cover;display:grid;place-items:center;background:linear-gradient(145deg,#e8dbc8,#cbb89d);color:#6c5541;font-style:italic;line-height:1.6;padding:15px}
+.photo small{display:block;margin-top:10px;color:var(--muted);font-style:italic}
+.wishes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px auto;max-width:650px}
+.wish{border-top:1px solid var(--line);padding:20px 10px;font-size:17px;line-height:1.65}
+.wish span{display:block;color:var(--rose);font-size:25px;margin-bottom:7px}
+.countbox{border:1px solid var(--line);padding:25px 15px;background:#fff9ef77}
+.countdown{display:flex;justify-content:center;gap:clamp(12px,4vw,30px);margin:20px 0}
+.time strong{display:block;font-size:clamp(34px,8vw,55px);font-weight:400}
+.time small{font:10px Arial,sans-serif;letter-spacing:2px;color:var(--muted)}
+.secret{display:none;text-align:left;margin:24px auto 0;background:#fff9efaa;border:1px dashed var(--rose);padding:25px;line-height:1.9;font-size:18px}
+.secret.show{display:block;animation:appear .5s ease}
+.progress{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:15;display:flex;gap:7px;background:#f8efdfdd;padding:9px 13px;border:1px solid var(--line);border-radius:30px}
+.dot{width:7px;height:7px;border-radius:50%;background:#cbb89d}
+.dot.on{background:var(--rose);transform:scale(1.3)}
+.nav{margin-top:28px}
+footer{font-style:italic;color:var(--muted)}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:560px){p{font-size:16px}.wishes{grid-template-columns:1fr}.gallery{gap:12px}.photo{padding:8px 8px 25px}.photo small{font-size:12px}.music{right:18px;top:16px}}
+</style>
+</head>
+<body>
+<button class="music" id="musicBtn">♫ Play music</button>
+<div class="progress" id="progress" aria-label="Halaman"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+<section class="page active" id="p0">
+ <div class="inner">
+  <div class="eyebrow">a little something, made just for you</div>
+  <div class="ornament">✧ ── ♡ ── ✧</div>
+  <h1>For my<br><em>Cuamiku.</em></h1>
+  <p class="sub">I made a tiny world for your special day. But first, press play and open your letter. ♡</p>
+  <div class="envelope" id="envelope" aria-label="Amplop ulang tahun">
+   <div class="env-back"></div><div class="env-front"></div><div class="env-flap"></div><div class="seal">♡</div>
+  </div>
+  <button class="btn primary" id="startBtn">Play music & open ♡</button>
+  <div class="eyebrow" style="margin-top:14px">November 24 · just for you</div>
+ </div>
+</section>
+
+<section class="page" id="p1"><div class="inner">
+ <div class="eyebrow">page 01 · the birthday wish</div><div class="ornament">✧</div>
+ <h1>Happy Birthday,<br><em>Cuamiku.</em></h1>
+ <p class="sub">To the person who makes my ordinary days feel a little more special.</p>
+ <p>Today is all about you. Take your time, because I have a few little things to tell you.</p>
+ <div class="nav"><button class="btn primary next">Turn the page →</button></div>
+</div></section>
+
+<section class="page" id="p2"><div class="inner">
+ <div class="eyebrow">page 02 · a letter from me to you</div><h2>Dear, my favorite person</h2><div class="ornament">❧</div>
+ <article class="card">
+  <p>Happy birthday, cuamiku. ♡</p>
+  <p>Hari ini adalah hari ketika seseorang yang begitu berarti buat aku bertambah usia. I wish I could wrap all my love into one little present and put it right into your hands.</p>
+  <p>Aku mungkin nggak bisa kasih kamu hadiah yang bisa dibungkus, tapi aku ingin kasih sesuatu yang dibuat dengan waktu, pikiran, dan hati aku sendiri. Sesuatu yang bisa kamu buka kapan pun, bahkan ketika hari ulang tahunmu sudah lewat.</p>
+  <p>Thank you for being you. For your hard work, your kindness, your big heart, and all the little things you do that maybe you don't even realize I notice. Aku bangga sama setiap proses yang kamu lewati, termasuk hari-hari yang nggak mudah.</p>
+  <p>Di usia yang baru ini, please don't be too hard on yourself. You deserve to feel proud of how far you've come. Kalau suatu hari dunia terasa berat, I hope you remember that you don't have to figure everything out in one day.</p>
+  <p>Semoga kita terus punya banyak cerita untuk dikenang, banyak tawa untuk dibagi, dan banyak hari baik untuk dijalani bersama. One day at a time, side by side.</p>
+  <p class="signature">With all my love,<br>your girl. ♡</p>
+ </article>
+ <div class="nav"><button class="btn next">Next page →</button></div>
+</div></section>
+
+<section class="page" id="p3"><div class="inner">
+ <div class="eyebrow">page 03 · little pieces of us</div><h2>Our memories</h2><p class="sub">A few moments I want to keep close. Replace these with your favorite photos together.</p>
+ <div class="gallery">
+  <div class="photo"><div class="placeholder">Your favorite photo<br>goes here ♡</div><small>one of my favorite moments</small></div>
+  <div class="photo"><div class="placeholder">Add another<br>little memory</div><small>the moments I keep close</small></div>
+  <div class="photo"><div class="placeholder">A picture that<br>makes you smile</div><small>you, being you</small></div>
+  <div class="photo"><div class="placeholder">One more photo<br>of us</div><small>more memories to come</small></div>
+ </div>
+ <div class="nav"><button class="btn next">Next page →</button></div>
+</div></section>
+
+<section class="page" id="p4"><div class="inner">
+ <div class="eyebrow">page 04 · for your new chapter</div><h2>My wishes for you</h2><div class="ornament">✧ ♡ ✧</div>
+ <div class="wishes">
+  <div class="wish"><span>✧</span>Semoga sehat selalu, panjang umur, dan selalu punya alasan untuk tersenyum.</div>
+  <div class="wish"><span>♡</span>Semoga setiap usaha dan kerja kerasmu menemukan jalan menuju hasil terbaik.</div>
+  <div class="wish"><span>☼</span>May your days be softer, your heart be lighter, and your dreams feel closer.</div>
+  <div class="wish"><span>❧</span>Semoga kamu selalu dikelilingi orang-orang baik dan diberi kekuatan di setiap proses.</div>
+ </div>
+ <div class="nav"><button class="btn next">One more page →</button></div>
+</div></section>
+
+<section class="page" id="p5"><div class="inner">
+ <div class="eyebrow">page 05 · a little secret</div><h2>Something just for you</h2><div class="ornament">✉</div>
+ <p class="sub">There's one more thing I saved just for you. Tap the little button to read it.</p>
+ <button class="btn primary" id="secretBtn">Open your secret ♡</button>
+ <div class="secret" id="secret">If I could choose again, in all the ordinary and extraordinary versions of life, I would still want to meet you. Aku nggak tahu semua hal yang menunggu kita di depan, but I know I want to keep learning, growing, and building a life with you. Thank you for being part of my story. I love you, cuamiku. ♡</div>
+ <div class="nav"><button class="btn next">Last page →</button></div>
+</div></section>
+
+<section class="page" id="p6"><div class="inner">
+ <div class="eyebrow">the last page · but not the last of us</div><div class="ornament">♡ ─── ✧ ─── ♡</div>
+ <h2>Until your next birthday...</h2>
+ <div class="countbox">
+  <div id="countLabel">Counting down to November 24, 2026</div>
+  <div class="countdown" id="countdown">
+   <div class="time"><strong id="days">--</strong><small>DAYS</small></div>
+   <div class="time"><strong id="hours">--</strong><small>HOURS</small></div>
+   <div class="time"><strong id="mins">--</strong><small>MINUTES</small></div>
+   <div class="time"><strong id="secs">--</strong><small>SECONDS</small></div>
+  </div>
+  <p style="color:var(--rose);font-style:italic">The world got you on this day. Lucky me. ♡</p>
+ </div>
+ <p class="sub" style="margin-top:28px">Made with love, just for you.<br><em>Always your girl.</em></p>
+ <div class="ornament">❧</div>
+ <button class="btn" onclick="showPage(0)">Read it again ↺</button>
+</div></section>
+
+<script>
+// Original gentle instrumental melody made with Web Audio (no external song file).
+let audioCtx, master, musicTimer, noteIndex=0, isPlaying=false;
+const notes=[261.63,329.63,392.00,329.63,293.66,349.23,440.00,349.23,261.63,329.63,392.00,523.25,440.00,392.00,349.23,329.63];
+function playNote(freq,start,duration,volume){
+  const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+  osc.type='sine';osc.frequency.value=freq;
+  gain.gain.setValueAtTime(0,start);
+  gain.gain.linearRampToValueAtTime(volume,start+.08);
+  gain.gain.exponentialRampToValueAtTime(.001,start+duration);
+  osc.connect(gain);gain.connect(master);osc.start(start);osc.stop(start+duration+.03);
+}
+function scheduleMusic(){
+  if(!isPlaying)return;
+  const now=audioCtx.currentTime,f=notes[noteIndex%notes.length];
+  playNote(f,now,1.15,.10);
+  if(noteIndex%4===0)playNote(f/2,now,1.8,.045);
+  noteIndex++;musicTimer=setTimeout(scheduleMusic,650);
+}
+async function startMusic(){
+  if(!audioCtx){
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC)return;
+    audioCtx=new AC();master=audioCtx.createGain();master.gain.value=.55;master.connect(audioCtx.destination);
+  }
+  if(audioCtx.state==='suspended')await audioCtx.resume();
+  if(!isPlaying){isPlaying=true;scheduleMusic();}
+  document.getElementById('musicBtn').textContent='♫ Music playing';
+}
+document.getElementById('musicBtn').addEventListener('click',async()=>{
+  if(isPlaying){isPlaying=false;clearTimeout(musicTimer);document.getElementById('musicBtn').textContent='♫ Play music';}
+  else await startMusic();
+});
+
+const pages=[...document.querySelectorAll('.page[data-page]')];
+let currentPage=0;
+function showPage(index){
+  currentPage=Math.max(0,Math.min(index,pages.length-1));
+  pages.forEach((page,i)=>page.classList.toggle('active',i===currentPage));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('startBtn').addEventListener('click',async()=>{
+  await startMusic();
+  showPage(1);
+});
+document.querySelectorAll('.page-nav .next').forEach(btn=>btn.addEventListener('click',()=>showPage(currentPage+1)));
+document.querySelectorAll('.page-nav .prev').forEach(btn=>btn.addEventListener('click',()=>showPage(currentPage-1)));
+
+let heartsStarted=false;
+function showerHearts(){
+  if(heartsStarted)return;heartsStarted=true;
+  const layer=document.getElementById('heartsLayer');layer.classList.add('show');
+  const symbols=['♡','♥','ღ','💕','♡'];
+  for(let i=0;i<65;i++){
+    const heart=document.createElement('span');
+    heart.className='floating-heart';heart.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    heart.style.left=Math.random()*100+'%';
+    heart.style.fontSize=(18+Math.random()*27)+'px';
+    heart.style.setProperty('--duration',(3.5+Math.random()*4)+'s');
+    heart.style.setProperty('--spin',(Math.random()*100-50)+'deg');
+    heart.style.animationDelay=(Math.random()*2.4)+'s';
+    layer.appendChild(heart);
+  }
+  document.getElementById('heartHint').textContent='A little love, floating all the way to you. ♡';
+  setTimeout(()=>layer.classList.remove('show'),8500);
+}
+document.getElementById('secretBtn').addEventListener('click',()=>{
+  const secret=document.getElementById('secret'),opened=!secret.classList.contains('show');
+  secret.classList.toggle('show');
+  document.getElementById('secretBtn').textContent=opened?'Close your secret':'Tap to open your secret';
+  if(opened)showerHearts();
+});
+
+const target=new Date('2026-11-24T00:00:00+07:00').getTime();
+function updateCountdown(){
+  const diff=target-Date.now();
+  if(diff<=0){
+    document.getElementById('countLabel').textContent='Today is your day. Happy birthday, cuamiku! ♡';
+    document.getElementById('countdown').innerHTML='<div style="font-size:25px;font-style:italic;color:#a66f68">It’s your day! Make a wish. ✧</div>';
+    return;
+  }
+  const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
+  document.getElementById('days').textContent=d;
+  document.getElementById('hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('mins').textContent=String(m).padStart(2,'0');
+  document.getElementById('secs').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,1000);
+</script>
+</body></html>
